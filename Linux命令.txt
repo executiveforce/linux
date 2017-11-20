@@ -1,0 +1,43 @@
+tail命令：
+	用于查看文件内容；
+	最基本的是cat、more、和less:
+		如果只想看前5行，可以使用head命令；
+		如果想查看文件的后10行，可以使用tail命令；
+		查看文件中间一段，可以使用sed命令
+
+find命令：
+	在一个目录中搜索文件，可以制定一些匹配条件，如按文件名、文件类型、用户甚至是时间戳查找文件。
+	常用形式可以简化为：find [path...] [expression]
+		path:查找的目录路径
+		expression：可以分为“-options[-print -exec -ok ...]”
+			-options:指定find命令常用选项
+			-print:将匹配的文件输出到标准输出
+			-exec:对匹配的文件执行该参数所给出的shell命令
+			-ok：和-exec作用相同
+	常用选项：
+		-name	按照文件名查找文件
+				find /dir -name filename
+		-perm	按照文件权限查找文件
+		-user	按照文件属主来查找文件
+		-group	按照文件所属的组来查找文件
+		-mtime -n +n  按照文件的更改时间来查找文件
+					  -n表示文件更改时间距现在n天以内
+					  +n表示文件更改时间距现在n天以前
+		-type	查找某一类型文件，如：
+				b	块设备文件 	find /etc -type d -print
+				d   目录			find . ! -type d -print
+				c	字符设备文件	
+				p   管道文件
+				l	符号链接文件	find /etc -type l -print
+				f   普通文件	
+
+		-size	查找文件长度为n块的文件，带有c时表示文件长度以字节记
+				find /home/apache -size 100c -print
+
+		-depth	在查找文件时，首先查找当前目录中的文件，然后再在其子目录中查找
+
+grep命令：
+	global search regular expression and print out the line
+	全面搜索正则表达式并把行打印出来
+	是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。
+	
